@@ -60,10 +60,13 @@
  *
  * const yelling = (array) => {
  *    // your code here
+ *
  * }
  */
 
-// ...
+const yelling = words => {
+  return words.map(word => word.toUpperCase())
+}
 
 /**
  *
@@ -72,7 +75,12 @@
  * the numbers multiplied by 2
  */
 
-// ...
+const doubleTrouble = numbers => {
+  for (let i = 0; i < numbers.length; i++) {
+    numbers[i] = numbers[i] * 2
+  }
+  return numbers
+}
 
 /*
  * Define a function stringyIndexes() that takes an array of
@@ -80,22 +88,29 @@
  * suffixed with " is at index X" where X is the index of the element
  */
 
-// ...
+const stringyIndexes = strings => {
+  for (let i = 0; i < strings.length; i++) {
+    strings[i] = strings[i] + ' is at index ' + [i]
+  }
+  return strings
+}
 
 /*
  * Define a function onlyTheEvenSurvive that accepts an array of
  * numbers and returns only the elements that are even
  */
 
-// ...
-
+const onlyTheEvenSurvive = numbers => {
+  return numbers.filter(number => number % 2 === 0)
+}
 /*
  * Define a function onlyTheEvenIndexedSurvive that accepts an array of
  * numbers and returns only the elements at indexes that are even
  */
 
-// ...
-
+const onlyTheEvenIndexedSurvive = numbers => {
+  return numbers.filter((number, i) => i % 2 === 0)
+}
 /*
  * Define a function bestMoviesOfTheYear that accepts an array of
  * movie objects AND a year and returns the names of movies that are
@@ -110,7 +125,11 @@
  * }
  */
 
-// ...
+const bestMoviesOfTheYear = (movies, aYear) => {
+  return movies
+    .filter(movie => movie.score > 90 && movie.year === aYear)
+    .map(movie => movie.name)
+}
 
 /*
  * Define a function everyoneIsOdd that accepts an array of
@@ -118,7 +137,9 @@
  * odd.
  */
 
-// ...
+const everyoneIsOdd = numbers => {
+  return numbers.map(number => number % 2 === 1)
+}
 
 /*
  * Define a function findTheNeedle that accepts an array of
@@ -126,7 +147,9 @@
  * `needle` inside
  */
 
-// ...
+const findTheNeedle = strings => {
+  return strings.filter(string => string === 'needle')
+}
 
 /*
  * Define a function findTheNeedleIndex that accepts an array of
@@ -134,7 +157,9 @@
  *  the word `needle` inside
  */
 
-// ...
+const findTheNeedleIndex = strings => {
+  return strings.filter((string, i) => string[i] === 'needle')
+}
 
 /*
  * Define a function someoneToLove that accepts an array of
@@ -142,7 +167,9 @@
  * four characters long
  */
 
-// ...
+const someoneToLove = strings => {
+  return strings.filter(string => string.length === 4)
+}
 
 /*
  * Define a function mapYourself that accepts an array of
@@ -153,7 +180,12 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
-// ...
+const mapYourself = numbers => {
+  for (let i = 0; i < numbers.length; i++) {
+    numbers[i] = numbers[i] * 2
+  }
+  return numbers
+}
 
 /*
  * Define a function filterYourself that accepts an
@@ -165,7 +197,12 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
-// ...
+const filterYourself = numbers => {
+  for (let i = 0; i < numbers.length; i++) {
+    numbers[i] = numbers[i] % 2 === 0
+  }
+  return numbers
+}
 
 /*
  * Define a function everyYourself that accepts an
@@ -177,7 +214,13 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
-// ...
+const everyYourself = numbers => {
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      return true
+    }
+  }
+}
 
 /**
  * NOTE: Don't modify anything below this line...
@@ -186,10 +229,13 @@
 /* eslint-disable no-undef */
 
 import test from 'ava'
+import { moveCursor } from 'readline'
 
 const ensureDefined = (t, method) => {
   if (eval(`typeof ${method}`) !== 'function') {
-    t.fail(`\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`)
+    t.fail(
+      `\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`
+    )
   }
 }
 
